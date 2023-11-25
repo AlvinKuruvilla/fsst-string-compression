@@ -14,4 +14,9 @@ public class Utils {
         return buffer.getLong();
     }
 
+    public static void fsst_unaligned_store(byte[] dst, int offset, long src) {
+        byte[] srcBytes = ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putLong(src).array();
+        System.arraycopy(srcBytes, 0, dst, offset, 8);
+    }
+
 }
